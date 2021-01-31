@@ -1,13 +1,3 @@
-from urllib.request import urlopen
-url = "https://www.wikipedia.org"
-
-page = urlopen(url) 
-html_bytes = page.read()
-html = html_bytes.decode("utf-8")
-print(html) 
-
-import datetime
-
 
 """This script is chiefly written to keep track of the users weight and give them appropriate advise on their diets.
 the data is stored in   (health_record.txt file)  """
