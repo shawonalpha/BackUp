@@ -1,0 +1,10 @@
+                   
+
+	This is file was edited by the nano editor.
+	nano is a text editior for the CLI on Linux.
+
+	At first the whole setup is very intimidataing but, it is actually not that much complicated at all.
+	it's just a basic text editor that has little to none support like conventional text editors with GUI support
+
+
+

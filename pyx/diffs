@@ -1,0 +1,261 @@
+.							      |	import datetime								
+import matplotlib					      |									
+import sys						      |									
+matplotlib.use('Agg')					      |	"""This script is chiefly written to keep track of the users 								
+							      |	the data is stored in   (health_record.txt file)  """								
+import matplotlib.pyplot as plt				      |									
+import numpy as np					      |									
+							      |	def weight_consultor(person, bmi, current_weight, required_we								
+xpoints = np.array([0, 6])				      |	    # height must be in m & weight in kg								
+ypoints = np.array([0, 250])				      |									
+							      |	    if bmi <= 24.5 or bmi <= 24.5:								
+plt.plot(xpoints, ypoints)				      |	        print(f'''								
+plt.show()						      |	You\'ve a healthy weight.If you want to maintain this weight 								
+							      |	{calorie} calories. But don\'t forget to exercise regularly a								
+#Two  lines to make our compiler able to draw:		      |									
+plt.savefig(sys.stdout.buffer)				      |	    elif bmi > 24.500001 or bmi < 18.499999:								
+sys.stdout.flush()					      |	        weight_changes = current_weight - required_weight								
+							      |	        print(f'''								
+							      |	{person.capitalize()} your weight is not balanced.								
+							      |	In proportion to your physical structure, your ideal weight i								
+print(matplotlib.__version__)				      |									
+							      |	        if weight_changes >= 0:								
+#I actually donno why, but executing this file on ubuntu pyth |	            change_type = 'lose'								
+# yiedls some really wierd stuffs			      |	        else:								
+                   					      |	            change_type = 'gain'								
+							      |	            weight_changes *= -1								
+	This is file was edited by the nano editor.	      |	            # corrects the gain and lose weight sign problem								
+	nano is a text editior for the CLI on Linux.	      |	        print(f'''								
+							      |	If you want to lead a healthy & happy life you should {change								
+	At first the whole setup is very intimidataing but, i |	And your daily calorie intake should be around {calorie} calo								
+	it's just a basic text editor that has little to none |	Regardless of how fit you are, you should exercise regularly 								
+							      |	    else:								
+							      |	        pass								
+							      |									
+							      |									
+print('hello world')					      |	def bmi_calculator(user_weight, user_height):								
+							      >	    # height in meter units								
+							      >	    bmi = user_weight / (user_height * user_height)								
+							      >	    return bmi								
+							      >									
+							      >									
+							      >	def ideal_weight_calculator(user_height):								
+							      >	    ideal_weight = 24.6 * (user_height * user_height)								
+							      >	    return ideal_weight								
+							      >									
+							      >									
+							      >	def bmr_calculator(user_gender, user_height, user_age, ideal_								
+							      >	    # height must be in cm unit								
+							      >	    if user_gender == 'female':								
+							      >	        bmr = 665 + (9.6 * ideal_weight) + (1.8 * user_height								
+							      >	    else:								
+							      >	        bmr = 66 + (13.7 * ideal_weight) + (5 * user_height) 								
+							      >	    return bmr								
+							      >									
+							      >									
+							      >	def instruction_giver(sex, person, person_age):								
+							      >	    if person_age > 18:								
+							      >	        if sex == 'male':								
+							      >	            address = 'Mr.'								
+							      >	        else:								
+							      >	            address = 'Ms.'								
+							      >	    else:								
+							      >	        address = ''								
+							      >	    return print(f'''								
+							      >	Hello {address}{person}. Please answer the following question								
+							      >	They\'re needed to provide you with accurate results.								
+							      >	Press Enter after typing the answers.''')								
+							      >									
+							      >									
+							      >	def calorie_calculator(user_activity, bmr):								
+							      >									
+							      >	    activity_coefficient = 1.2 + (int(user_activity) - 1) * 0								
+							      >	    # this line is used because the coefficient increases 0.1								
+							      >	    calorie_requirement = activity_coefficient * bmr								
+							      >	    return calorie_requirement								
+							      >									
+							      >									
+							      >	# Name								
+							      >									
+							      >	print('What\'s your name?')								
+							      >	while True:								
+							      >	    name_input = input('Ans: ')								
+							      >	    if len(name_input) < 3:								
+							      >	        print('Name should be at least 3 characters long.')								
+							      >	    elif len(name_input) > 50:								
+							      >	        print('Name should be at least 50 characters long.')								
+							      >	    else:								
+							      >	        name = name_input.capitalize()								
+							      >	        break								
+							      >									
+							      >	# _Gender								
+							      >									
+							      >	print('''								
+							      >	If you\'re a Female, Enter: M								
+							      >	If you\'re a Male, Enter: F  ''')								
+							      >	while True:								
+							      >	    gender_input = input('Gender: ')								
+							      >	    gender_validity = gender_input.isalpha()								
+							      >	    if gender_validity:								
+							      >	        gender_input.lower()								
+							      >									
+							      >	        if gender_input in ('male', 'female', 'm', 'f'):								
+							      >									
+							      >	            if gender_input == 'm' or gender_input == 'male':								
+							      >	                gender_input = 'male'								
+							      >	            else:								
+							      >	                gender_input = 'female'								
+							      >	            gender = gender_input								
+							      >	            break								
+							      >	        else:								
+							      >	            print('Please enter your gender correctly\nM or F								
+							      >	    else:								
+							      >	        print('''								
+							      >	Please enter your gender correctly.								
+							      >	M or F ?''')								
+							      >									
+							      >	# _Age								
+							      >									
+							      >	print(f'''								
+							      >	What\'s your age?''')								
+							      >	while True:								
+							      >	    age_input = input('Ans: ')								
+							      >	    age_validity = age_input.isnumeric()								
+							      >	    if age_validity:								
+							      >	        age = int(age_input)								
+							      >	        break								
+							      >	    else:								
+							      >	        print(f'{name} you must enter your age numeric form i								
+							      >									
+							      >									
+							      >	# Gives instructions for the User								
+							      >	instruction_giver(gender, name, age)								
+							      >									
+							      >									
+							      >	# _Weight								
+							      >									
+							      >	print(f'''								
+							      >	What\'s your current weight (Kg)? ''')								
+							      >	while True:								
+							      >	    weight_input = input('Ans: ')								
+							      >	    weight_validity = weight_input.isnumeric()								
+							      >	    if weight_validity:								
+							      >	        weight = int(weight_input)								
+							      >	        break								
+							      >	    else:								
+							      >	        print('Please Enter your weight in numeric values, i.								
+							      >									
+							      >									
+							      >	# _Height								
+							      >									
+							      >	print('''								
+							      >	*********************************************								
+							      >									
+							      >	Enter your height in the following manner,for example:- \nIf 								
+							      >	*Foot: 5								
+							      >	*Inches: 4								
+							      >	Now, enter your height.\n''')								
+							      >									
+							      >									
+							      >	while True:								
+							      >	    try:								
+							      >	        foots = int(input('*Foot: '))								
+							      >	        inches = float(input('*Inches: '))								
+							      >	        break								
+							      >	    								
+							      >	    except:								
+							      >	        print('Please enter you height properly')								
+							      >	        continue    								
+							      >	# ******************************************								
+							      >	# Man there is just no end to innovations								
+							      >	#like i had to reformate the above code for mode than a dozen								
+							      >	    								
+							      >									
+							      >	# we don't want alphabets in this input								
+							      >	    #foot_validity = height_input_foot.isalpha()								
+							      >	    #inches_validity = height_input_inches.isalpha()								
+							      >									
+							      >									
+							      >	    #is_foot_int = isinstance(height_input_foot, int)								
+							      >	    #is_inch_float = isinstance(height_input_foot, float)								
+							      >									
+							      >	    #if is_foot_int and is_inch_float:								
+							      >									
+							      >	        #if is_foot_int and is_inch_float:								
+							      >	#								
+							      >	#        elif height_input_foot == '' or height_input_inches 								
+							      >	#            print('Please enter you height.')								
+							      >	#            continue								
+							      >	#        else:								
+							      >	#            break								
+							      >	#            print('operation failed')								
+							      >									
+							      >	  #      else:								
+							      >	  #          print('Please enter you height properly.')								
+							      >	  #          continue								
+							      >	  #  else:								
+							      >	  #      print('Please enter your height in numeric form...')								
+							      >									
+							      >	# _Activity								
+							      >									
+							      >	print('''								
+							      >	  Almost done								
+							      >	  Select your Activity Level:\n								
+							      >	1) Lazy, no work or exercise at all.								
+							      >	2) slightly active 2-3 days a week								
+							      >	3) active, exercise 2-3 days a week								
+							      >	4) very active, exercise 7 days a week								
+							      >	5) Hyper active, a lot of exercise and sports every single da								
+							      >	             ''')								
+							      >	while True:								
+							      >	    activity_input = input('Level: ')								
+							      >	    activity_validity = activity_input.isdigit()								
+							      >	    if activity_validity:								
+							      >									
+							      >	        if activity_input in ('1', '2', '3', '4', '5'):								
+							      >	            activity = activity_input								
+							      >	            break								
+							      >									
+							      >	        elif activity_input not in ('1', '2', '3', '4', '5'):								
+							      >	            print('Please select your Activity Level from 1 -								
+							      >									
+							      >	        else:								
+							      >	            print('Please select your Activity Level from 1 -								
+							      >									
+							      >									
+							      >	def ft_meter_converter(foot, inch):								
+							      >	    meter_height = (foot * 12 + inch) * 0.0254								
+							      >	    return meter_height								
+							      >									
+							      >									
+							      >	user_height_m = ft_meter_converter(foots, inches)								
+							      >	user_height_cm = (user_height_m * 100)								
+							      >	# the  user_bmr will be used to calculate daily calorie intak								
+							      >									
+							      >									
+							      >	user_bmi = bmi_calculator(weight, user_height_m)								
+							      >	preferable_weight = ideal_weight_calculator(user_height_m)								
+							      >									
+							      >	user_bmr = bmr_calculator(gender, user_height_cm, age, prefer								
+							      >	required_calorie = calorie_calculator(activity, user_bmr)								
+							      >									
+							      >	weight_consultor(name, user_bmr, weight, preferable_weight, r								
+							      >									
+							      >	date = datetime.datetime.now()								
+							      >									
+							      >	# _Records								
+							      >	with open('health_records.txt', 'a') as records:								
+							      >	    records.write(f'#{name} :-\n')								
+							      >	    records.write(f'''								
+							      >	Gender: {gender}								
+							      >	Age: {age}								
+							      >	Height: {foots}'{inches}								
+							      >	Weight: {weight}								
+							      >	Activity_level: {activity}								
+							      >	Consulting_Date: {date}\n\n''')								
+							      >									
+							      >									
+							      >	if __name__ == '__main__':								
+							      >	    print('\nThank you for using my programme.')								
+							      >	else:								
+							      >	    print('\nIf you face any problems email me at alphaimon@g								

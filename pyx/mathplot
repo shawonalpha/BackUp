@@ -1,0 +1,36 @@
+.
+import matplotlib
+import sys
+matplotlib.use('Agg')
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+xpoints = np.array([0, 6])
+ypoints = np.array([0, 250])
+
+plt.plot(xpoints, ypoints)
+plt.show()
+
+#Two  lines to make our compiler able to draw:
+plt.savefig(sys.stdout.buffer)
+sys.stdout.flush()
+
+
+
+print(matplotlib.__version__)
+
+#I actually donno why, but executing this file on ubuntu python3 
+# yiedls some really wierd stuffs
+                   
+
+	This is file was edited by the nano editor.
+	nano is a text editior for the CLI on Linux.
+
+	At first the whole setup is very intimidataing but, it is actually not that much complicated at all.
+	it's just a basic text editor that has little to none support like conventional text editors with GUI support
+
+
+
+
+print('hello world')

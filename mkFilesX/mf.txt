@@ -1,0 +1,61 @@
+#here is a makfile for managing a small software project
+
+#************************************ 
+# This file is self documented when I was only starting out with make files
+# for a better understanding of how the porecess really takes place under the hood
+
+
+IDIR =../include
+CC=gcc
+CFLAGS=-I$(IDIR)
+
+ODIR=obj
+LDIR =../lib
+
+LIBS=-lm
+
+# the patsubst string formating function works like this,
+# (patsubst PATTERN, REPLACEMENT, ORIGINAL TEXT)
+
+#eg: (patsubst %.c,%.o,$(wildcard *.c))
+# this command replaces all the .c files in the directory with the .o extention
+
+# ________________ Here _DEPS and _OBJ are in different directory than MAKEFILE_____________________
+
+_DEPS = hellomake.h
+DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
+#here the deps  is setting the location for each individual file in _DEPS
+
+#**********************************************************************************
+#here the patsubst is gonna look for all files and it's gonna REPLACE( the directory of the file it's gonna map like this
+# FileLocation/File
+#*************************************************************************************
+#the results of DEPS are
+#-->  ../include/hellomake
+
+_OBJ = hellomake.o hellofunc.o
+OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
+#similarly the results of OBJ are
+#--> obj/hellomake.o obj/hellofunc.o
+
+# Odir here means the path to the directory containig the object files
+$(ODIR)/%.o: %.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
+# the -c means to compile into object code &
+# the -o $@ means to set the object codes to the target( here to evey file ending with a .o extention
+
+hellomake: $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+# $@ indicats everything on the left :
+# $^ indicats everthing on the right of :
+# from the preceding code,
+#$@ --> hellomake
+#$^ --> $(OBJ)
+
+.PHONY: clean
+
+# here phony is use to indicate that clean is a file that's always out of date, so everytime
+# map clean is used the make will definately use clean
+
+clean:
+	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~
